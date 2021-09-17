@@ -9,7 +9,7 @@ public class Pikachu extends Pokemon implements VoltTackle,Trovão{
     }
 
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
 
         this.peso = ((Math.round(Math.random()*10))*0.1) + 6 ;
         this.altura = ((Math.round(Math.random()*10)) * 0.04) + 0.2 ;

@@ -13,7 +13,7 @@ public class Charmander extends Pokemon implements LancaChamas {
     }
 
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
         /*ev=(Math.round((Math.random()+2)*this.level))*/
         /*iv=(Math.round((Math.random()+0.1)*100))*/
         /*this.vida= (int) Math.floor(0.01*(2*Base + iv + Math.floor(0.25*(Math.round((Math.random()+22)*21.17)))*this.level) + this.level + 10);*/

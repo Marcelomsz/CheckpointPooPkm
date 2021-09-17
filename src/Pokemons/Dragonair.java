@@ -10,7 +10,7 @@ public class Dragonair extends Dratini{
     }
 
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
 
         this.peso = ((Math.round(Math.random()*10))*0.1) + 16.5 ;
         this.altura = ((Math.round(Math.random()*10)) * 0.04) + 3.8;

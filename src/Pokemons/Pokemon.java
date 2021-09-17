@@ -1,6 +1,7 @@
 package Pokemons;
 
 public abstract class Pokemon {
+    //Atributos da classe mãe pokemon , o usuario podera escolher apenas nome e level , os outros serao gerados aleatoriamente , gerando sempre pokemons com atributos diferentes//
 
     protected String nome;
     protected int level;
@@ -19,17 +20,18 @@ public abstract class Pokemon {
     protected String tipo1;
     protected String tipo2;
 
+    //Metodo construtor vai aceitar nome e level e chama os metodos gerarStatus(),VerificarShiny(), gerarNature() e gerarSexo();
     public Pokemon(String nome, int level) {
         this.nome = nome;
         this.level = level;
 
-        gerarStatus();
+        gerarStats();
         VerificarShiny();
-        gerarnature();
-        verisexo();
+        gerarNature();
+        gerarSexo();
     }
-
-    private void verisexo() {
+    //Metodo gerarSexo() define o atributo sexo baseado em um algoritimo "aleatorio" 0 ou 1
+    private void gerarSexo() {
         int numero = (int) Math.round(Math.random());
         if (numero==0){
             this.sexo="M";
@@ -38,8 +40,8 @@ public abstract class Pokemon {
             this.sexo="F";
         }
     }
-
-    private void gerarnature() {
+    //Metodo gerarNature() define o atributo Natureza baseado em um algoritimo "aleatorio" de 0 a 24
+    private void gerarNature() {
         int numero= (int) Math.round(Math.random()*24);
         if (numero==0){
             natureza="Resistente";
@@ -210,9 +212,17 @@ public abstract class Pokemon {
         }
 
     }
+    //Metodo gerarStatus() nao é usado aqui mas sera sobreescrito nas classes filhas
+    public abstract void gerarStats();
+    /*ev=(Math.round((Math.random()+2)*this.level))
+        iv=(Math.round((Math.random()+0.1)*100))
+        this.vida= (int) Math.floor(0.01*(2*Base + iv + Math.floor(0.25*(Math.round((Math.random()+22)*21.17)))*this.level) + this.level + 10);
+    outros Stats = Math.floor(0.01*(2 * Base + IV + Math.floor(0.25 x EV)) x this.level)+5)*Nature
+    Nature=(Math.round((Math.random()+0.3)*4))
+        this.peso = ((Math.round(Math.random()*10))*0.1) + 8 ;
+        this.altura = ((Math.round(Math.random()*10)) * 0.04) + 0.4 ;*/
 
-    public abstract void gerarStatus();
-
+    //Metodo VerificarShiny() define o atributo boolean shiny baseado em um algoritimo "aleatorio" com chance de 1 em 51 de ser true.
     public void VerificarShiny() {
         int numero = (int) Math.round(Math.random() * 50);
         if (numero == 26) {
@@ -228,7 +238,7 @@ public abstract class Pokemon {
         }
 
     }
-
+    //Sobreescreve o metodo toString , é onde os atributos do objeto sao escritos após criado.
     @Override
     public String toString() {
         return "Pokemon - " +especie + ".  Tipo: " + tipo1+ ".  Level " + level + '\n' +"Nome: " + nome +".  Natureza : "+natureza+ ".  Sexo: "+sexo+ '\n' + "Pesa: " + peso +"Kg."+" Mede : " + altura +"M."+'\n' + "Vida: " + vida + "  Ataque: " + ataque +  "  Defesa: " + defesa + '\n' + "Ataque Especial: " + ataqueEspecial + "  Defesa Especial: " + defesaEspecial + '\n' + "Velocidade: " + velocidade + "    Shiny? = " + shiny+'\n';

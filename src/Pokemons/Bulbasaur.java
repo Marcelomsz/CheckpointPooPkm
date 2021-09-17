@@ -10,7 +10,7 @@ public class Bulbasaur extends Pokemon implements RaioSolar,Bombalodo{
     }
 
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
 
         this.peso = ((Math.round(Math.random()*10))*0.1) + 6.9 ;
         this.altura = ((Math.round(Math.random()*10)) * 0.04) + 0.5 ;

@@ -9,7 +9,7 @@ public class Charizard extends Charmeleon implements Voar{
         this.tipo2 = "Voador";
     }
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
         this.peso = ((Math.round(Math.random()*10))*0.1) + 90.5 ;
         this.altura = ((Math.round(Math.random()*10)) * 0.04) + 1.5;
         this.vida= (int) Math.floor(0.01*(2*78 + (Math.round((Math.random()+1)*100)) + Math.floor(0.25*(Math.round((Math.random()+22)*21.17)))*this.level) + this.level + 10);

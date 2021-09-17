@@ -4,18 +4,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Principal {
+    //criando duas arrays pra guardar o time do usuario e o time do rival
     public static ArrayList<Pokemon> pokemons = new ArrayList<>();
     public static ArrayList<Pokemon> rivalpokes = new ArrayList<>();
+
+    //main usa o metodo criar()
+
 
     public static void main(String[] args) {
         Criar();
     }
+    //Criar() começa pergunta se precisa de uma lista dos pokes que podem ser criados e aceitando uma resposta por scanner , depois disso pergunta o nome e o level , apos isso o objeto pokemon escolhido é criado e colocado no array.
     private static void Criar() {
         Scanner scan = new Scanner(System.in);
         System.out.print("Precisa da lista de Pokemons?" + '\n' + ":");
         String lista1 = scan.next();
         if (lista1.equalsIgnoreCase("sim")) {
-            System.out.print("id=1 Bulbasaur ,id=2 Ivysaur ,id=3 Venusaur ,id=4 Charmander ,id=5 Charmeleon." + '\n' + "id=6 Charizard ,id=7 Squirtle ,id=8 Wartortle ,id=9 Blastoise ,id=10 Snorlax." + '\n'+ "id=11 Pikachu ,id=12 Raichu ,id=13 Dratini ,id=14 Dragonair ,id=15 Dragonite."+'\n');
+            System.out.print("id=1 Bulbasaur ,id=2 Ivysaur ,id=3 Venusaur ,id=4 Charmander ,id=5 Charmeleon." + '\n' + "id=6 Charizard ,id=7 Squirtle ,id=8 Wartortle ,id=9 Blastoise ,id=10 Snorlax." + '\n' + "id=11 Pikachu ,id=12 Raichu ,id=13 Dratini ,id=14 Dragonair ,id=15 Dragonite." + '\n');
 
         }
         System.out.print("Digite id do pokemon: ");
@@ -25,15 +30,16 @@ public class Principal {
             System.out.print("Digite o nome do pokemon: ");
             String nome1 = scan.next();
             System.out.print("Digite o level do pokemon: ");
+            //verificação para se o level for maior que 100 ou menor q 1
             int lvl1 = (int) Math.round(scan.nextDouble());
             if (lvl1 >= 100) {
                 lvl1 = 100;
-            }
-            else if (lvl1 <= 1) {
+            } else if (lvl1 <= 1) {
                 lvl1 = 1;
             }
 
             if (lvl1 >= 32) {
+                //se pokemon level maior que level requerido ele pode evoluir , aparecendo um scanner para aceitar ou nao.
                 System.out.println("Seu Bulbasaur pode evoluir para Venusaur, voce aceita?" + '\n' + ":");
 
                 String char2 = scan.next();
@@ -305,8 +311,7 @@ public class Principal {
                     Pokemon Pikachu = new Pikachu(nome1, lvl1);
                     pokemons.add(Pikachu);
                 }
-            }
-            else {
+            } else {
                 Pokemon Pikachu = new Pikachu(nome1, lvl1);
                 pokemons.add(Pikachu);
             }
@@ -333,8 +338,7 @@ public class Principal {
             int lvl1 = (int) Math.round(scan.nextDouble());
             if (lvl1 >= 100) {
                 lvl1 = 100;
-            }
-            else if (lvl1 <= 1) {
+            } else if (lvl1 <= 1) {
                 lvl1 = 1;
             }
 
@@ -411,19 +415,26 @@ public class Principal {
             pokemons.add(Dragonite);
         }
 
+        //verificação para se o numero de objetos no array é maior que cinco.se for o array é impresso , mostrando os objetos e seus atributos.
         if (pokemons.size() > 5) {
 
             for (Pokemon p : pokemons) {
                 System.out.println(p);
             }
+            //Alem disso é perguntado se quer remover algum pokemon.
             System.out.println("Seu time já tem seis pokemons ,Deseja trocar algum deles ?" + '\n' + ":");
             String enviar1 = scan.next();
             if (enviar1.equalsIgnoreCase("sim")) {
                 System.out.println("Qual ?(numero de 0 a 5)" + '\n' + ":");
-
-                byte num = scan.nextByte();
+                //verificação para se o numero escolhido for maior que 5 ou menor que 0
+                int num = (scan.nextByte());
+                if (num >= 5) {
+                    num = 5;
+                } else if (num <= 0) {
+                    num = 0;
+                }
                 pokemons.remove(num);
-
+                //Alem disso é perguntado se quer repor esse pokemon removido.
                 System.out.print("Deseja criar outro pokemon? " + '\n' + ":");
                 String escolha1 = scan.next();
                 if (escolha1.equalsIgnoreCase("sim")) {
@@ -434,6 +445,7 @@ public class Principal {
             }
         }
         else {
+            //retorna aqui se ainda nao tem mais de 5 pokes e chama o metodo criar() novamente.
             System.out.print("Deseja criar outro pokemon? " + '\n' + ":");
             String escolha1 = scan.next();
             if (escolha1.equalsIgnoreCase("sim")) {
@@ -442,11 +454,13 @@ public class Principal {
             else {
                 for (Pokemon p : pokemons) {
                     System.out.println(p);
-                    System.exit(1);
+
                 }
+
             }
         }
     }
+    //metodo Criarrival() primeiro soma o level de todos os seus pokes e divide pelo numero de pokes que foram criados.Depois um poke sao criados de forma aleatoria e usando a media calculada e nomes pré definidos e é colocado no array rivalpokes.
     private static void Criarrival() {
         int lvlrival = 0;
             for (Pokemon p : pokemons) {
@@ -516,8 +530,9 @@ public class Principal {
             rivalpokes.add(venven);
         }
     }
+            //Aqui é uma pergunta se quer lutar com o rival , se sim serao criados pokes para ele igual ao numero criado no array pokemon e eles serao imprimidos.
     private static void lutar() {
-        System.out.print("Deseja batalhar com o Campeão ? " + '\n' + ":");
+        System.out.print("Deseja batalhar com o Rival ? " + '\n' + ":");
         Scanner scan = new Scanner(System.in);
         String escolha1 = scan.next();
         if (escolha1.equalsIgnoreCase("sim")) {

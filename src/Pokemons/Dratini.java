@@ -9,7 +9,7 @@ public class Dratini extends Pokemon implements AquaTail,DragonRush{
     }
 
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
 
         this.peso = (Math.round(Math.random()*10)*0.1) + 3.3;
         this.altura = ((Math.round(Math.random()*10)) * 0.04) + 1.6;

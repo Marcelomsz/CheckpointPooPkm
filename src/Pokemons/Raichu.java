@@ -9,7 +9,7 @@ public class Raichu extends Pikachu{
     }
 
     @Override
-    public void gerarStatus() {
+    public void gerarStats() {
 
         this.peso = ((Math.round(Math.random()*10))*0.1) + 30 ;
         this.altura = ((Math.round(Math.random()*10)) * 0.04) + 0.6 ;
